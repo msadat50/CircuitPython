@@ -42,7 +42,7 @@ Make an account with your google ID at [tinkercad.com](https://www.tinkercad.com
 Then post an image here.   [here's a quick tutorial for all markdown code, like making links](https://www.markdownguide.org/basic-syntax/)
 
 ### Reflection
-Doing this was easy the only promble was that I had the code written but when I was trying to uploaded it wasn't working like the light was changing, but one of my classmate help me out. The promble was that I had to uploade something in my folder first after doing that it worked. 
+Doing this was easy. The only promble was that I had the code written but when I was trying to uploaded it wasn't working like the light was changing, but one of my classmate help me out. The promble was that I had to uploade something in my folder first after doing that it worked. 
 
 
 
@@ -73,11 +73,15 @@ while True:
 ```
 
 ### Evidence
+This is the websites that I used to get the code for my servo.
+
+[The code and wiring for servo ](https://www.makerguides.com/servo-arduino-tutorial/)
 
 ### Images
+<img src="https://github.com/msadat50/CircuitPython/blob/main/Pictures/Screenshot%202021-09-13%203.05.01%20PM.png?raw=true" width="400">
 
 ### Reflection
-Doing this was easy I had one wiring putting in the wrong place, Thanks to Mr. H he helped me correct it and he help me put the code into the in github. 
+Doing this was easy. I had one wiring putting in the wrong place, which was the A0 Thanks to Mr. H he helped me correct it and he help me put the code into the in github. 
 
 
 

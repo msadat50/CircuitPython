@@ -81,7 +81,7 @@ This is the websites that I used to get the code for my servo.
 <img src="https://github.com/msadat50/CircuitPython/blob/main/Pictures/Screenshot%202021-09-13%203.05.01%20PM.png?raw=true" width="400">
 
 ### Reflection
-Doing this was easy. I had one wiring putting in the wrong place, which was the A0 Thanks to Mr. H he helped me correct it and he help me put the code into the in github. 
+Doing this was easy. I had one wiring putting in the wrong place, which was the A1 Thanks to Mr. H he helped me correct it and he help me put the code into the in github. 
 
 
 

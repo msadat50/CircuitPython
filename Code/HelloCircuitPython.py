@@ -1,16 +1,18 @@
 # Write your code here :-)
 import board
-import neopixel
-import sleep
+import pwmio
+import servo
 
-dot = neopixel.NeoPixel(board.NEOPIXEL, 1)
-dot.brightness = 0.5
+# create a PWMOut object on Pin A2.
+pwm = pwmio.PWMOut(board.A2, duty_cycle=2 ** 15, frequency=50)
 
-print("Make it red!")
+# Create a servo object, my_servo.
+my_servo = servo.Servo(pwm)
 
 while True:
-    dot.fill((0, 0, 255))
-    time.sleep
-    print("Make it yellow!")
-    dot.fill((51, 204, 51))
-    time.sleep
+    for angle in range(0, 180, 5):  # 0 - 180 degrees, 5 degrees at a time.
+        my_servo.angle = angle
+        time.sleep(0.05)
+    for angle in range(180, 0, -5): # 180 - 0 degrees, 5 degrees at a time.
+        my_servo.angle = angle
+        time.sleep(0.05)

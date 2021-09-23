@@ -5,6 +5,7 @@
 * [Hello_CircuitPython](#Hello_CircuitPython)
 * [CircuitPython_Servo](#CircuitPython_Servo)
 * [CircuitPython Servo Touch](#CircuitPython_Servo_Touch)
+* [CircuitPython Distance Sensor](#CircuitPython_Distance_Sensor)
 * [CircuitPython_LCD](#CircuitPython_LCD)
 * [NextAssignmentGoesHere](#NextAssignment)
 ---
@@ -131,8 +132,8 @@ while True:
     
 ```
 ## Evidence
+
 I used Mr. H code for this assignments. 
-<img src="the distance sensor.gif" width="400">
 
 [This is Mr H servo Touch code](https://github.com/Helmstk1/CircuitPython/blob/master/files/touchTheWireServo.py)
 
@@ -142,6 +143,69 @@ I used Mr. H code for this assignments.
 ### Reflection
 Doing this was good. I had some troubles getting the servo work. At the beginning the servo was working but than after a few minutes the servo wasn't working. I checked the wiring like 3 times to see if I had the wire in the wrong place, but the wiring seems good to me. After that I asked MR. H for help to see what could have gone wrong he checked the code everything looked good expect one part wasn't the same so we fix it. After that I uploded the code to see if the servo is working So I did but still the servo wasn't working. So the next day I checked the wiring again, the wiring was good I asked Mr. Dierolf for help. 
 He checked my code the code was good, than he checked the wiring at first when he see it the wiring was good, so we didn't know what I have done wrong. Than he said that I had one wiring putting in the wrong place, and I was using the wrong servo, so I changed the servo but than the servo worked. Thanks to Mr Dierolf he helped me fix it. 
+
+## CircuitPython_Distance sensor
+
+### Description & Code 
+
+```python
+
+import time
+import board
+import neopixel
+import simpleio
+import adafruit_hcsr04
+
+sonar = adafruit_hcsr04.HCSR04(trigger_pin=board.D5, echo_pin=board.D6)
+dot = neopixel.NeoPixel(board.NEOPIXEL, 1)
+r=0
+g=0
+b=0
+
+cm = 0
+while True:
+    try:
+        cm = sonar.distance
+        print((cm))
+        if cm < 5:
+            r=255
+            g=0
+            b=0
+            print("red!")
+        elif cm < 20:
+            print("red or blue!")
+            r = simpleio.map_range(cm, 5, 20, 255, 0)
+            g = 0
+            b = simpleio.map_range(cm, 5, 20, 0, 255)
+
+
+        elif cm < 35:
+            print("blue or green!")
+            r = 0
+            g = simpleio.map_range(cm, 20, 35, 0, 255)
+            b = simpleio.map_range(cm, 20, 35, 255, 0)
+
+        else:
+            print("green")
+        dot.fill((int(r), int(g), int(b)))
+
+    except RuntimeError:
+        print("Retrying!")
+    time.sleep(0.1)
+
+### Evidence
+The credit goes to Quinn for helping me 
+
+```
+
+<img src="the distance sensor.gif" width="400">
+
+
+### Images
+
+### Reflection
+
+
 
 ## CircuitPython_LCD
 

@@ -4,12 +4,14 @@
 import time
 import board
 import neopixel
-import simpleio.mpy
+import simpleio
 import adafruit_hcsr04
 
 sonar = adafruit_hcsr04.HCSR04(trigger_pin=board.D5, echo_pin=board.D6)
 dot = neopixel.NeoPixel(board.NEOPIXEL, 1)
-
+r=0
+g=0
+b=0
 
 cm = 0
 while True:
@@ -30,9 +32,9 @@ while True:
 
         elif cm < 35:
             print("blue or green!")
-            r = simpleio.map_range(cm, 20, 0, 255)
-            g = 0
-            b = simpleio.map_range(cm, 20, 0, 255, 0)
+            r = 0
+            g = simpleio.map_range(cm, 20, 35, 0, 255)
+            b = simpleio.map_range(cm, 20, 35, 255, 0)
 
         else:
             print("green")

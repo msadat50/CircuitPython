@@ -132,7 +132,7 @@ while True:
 ```
 ## Evidence
 I used Mr. H code for this assignments. 
-<img src="the distance sensor" width="400">
+<img src="the distance sensor.gif" width="400">
 
 [This is Mr H servo Touch code](https://github.com/Helmstk1/CircuitPython/blob/master/files/touchTheWireServo.py)
 

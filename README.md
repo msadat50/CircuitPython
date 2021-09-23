@@ -74,9 +74,13 @@ while True:
 ```
 
 ### Evidence
-This is the websites that I used to get the code for my servo.
+The servo moved something like this:
 
-[The code and wiring for servo ](https://www.makerguides.com/servo-arduino-tutorial/)
+<img src="https://media.giphy.com/media/4EFCiAOcusZ2OOTi3X/giphy.gif" width="400">
+
+[Image credit goes to electronics-lab.com](https://www.electronics-lab.com/project/using-sg90-servo-motor-arduino/)
+
+[This is the websites that I used to get the code for my servo.](https://www.makerguides.com/servo-arduino-tutorial/)
 
 ### Images
 <img src="https://github.com/msadat50/CircuitPython/blob/main/Pictures/Screenshot%202021-09-13%203.05.01%20PM.png?raw=true" width="400">

@@ -6,6 +6,7 @@
 * [CircuitPython_Servo](#CircuitPython_Servo)
 * [CircuitPython Servo Touch](#CircuitPython_Servo_Touch)
 * [CircuitPython Distance Sensor](#CircuitPython_Distance_Sensor)
+* [CircuitPython Photointerrupters](#CircuitPython_Photointerrupter)
 * [CircuitPython_LCD](#CircuitPython_LCD)
 * [NextAssignmentGoesHere](#NextAssignment)
 ---
@@ -35,8 +36,6 @@ while True:
 
 ```
 
-
-### Evidence
 
 ### Images
 <img src="https://github.com/msadat50/CircuitPython/blob/main/Pictures/changing%20color%202.png?raw=true" width="200">
@@ -132,10 +131,17 @@ while True:
     
 ```
 ## Evidence
+The touch servo moved something like this:
+
+<img src="https://projects-static.raspberrypi.org/projects/getting-started-crumble/0df4d240330dcb842375927e100ab166c46a5cb8/en/images/servo_movement_0.gif" width="400">
+
+[Image credit goes to projects.raspberrypi.org](https://projects.raspberrypi.org/en/projects/getting-started-crumble/6)
+
+
 
 I used Mr. H code for this assignments. 
 
-[This is Mr H servo Touch code](https://github.com/Helmstk1/CircuitPython/blob/master/files/touchTheWireServo.py)
+[This is Mr. H code link that I used for servo Touch assignment](https://github.com/Helmstk1/CircuitPython/blob/master/files/touchTheWireServo.py)
 
 ### Images
 <img src="https://github.com/msadat50/CircuitPython/blob/main/Pictures/The%20touch%20servo%20wiring%20.png?raw=true" width="400">
@@ -193,17 +199,28 @@ while True:
         print("Retrying!")
     time.sleep(0.1)
 
-### Evidence
-The credit goes to Quinn for helping me 
 
 ```
+
+### Image/video
+ The video credit goes to Quinn for helping me.
 
 <img src="the distance sensor.gif" width="400">
 
 
-### Images
-
 ### Reflection
+Doing this was hard for me in the beginning and confusing. There was a link to the assignment that would take you to this very long confusing code when I saw that code I didn't know which part of the code we should copy, so I just copied the whole code and put it in Mu. After that I didn't even know what to do so I used the hint to help me when I clicked on it there was all variable iut made it even more confusing this time I asked Mr. H for help He helped me find the correct code and than explained it to me I understanded it better than it was easy and he did the first part of the code for me to understand it better. After that I knew what to do.
+
+### Evidence
+[This is Dylan Herrada code link that I used for Distance Sensor assignment](https://github.com/adafruit/Adafruit_CircuitPython_HCSR04/blob/main/examples/hcsr04_simpletest.py)
+
+[This was the Dylan Herrada long confusing code for distance sensor assignment](https://github.com/adafruit/Adafruit_CircuitPython_HCSR04/blob/main/adafruit_hcsr04.py)
+
+[This is the hint link for distance sensor assignment thjat I used](https://docs.google.com/spreadsheets/d/e/2PACX-1vRzoIejkQqugrDoWHBw14qTI0HifXba92WiyQ24whEnzWcCUaCDYu6ifMQKK5O5Ilkxrd7UKIxPLBCW/pubhtml)
+
+[This is the link for how to use simpleip for distance sensor assignment](https://circuitpython.readthedocs.io/projects/simpleio/en/latest/api.html#simpleio.map_range)
+
+
 
 
 

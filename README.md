@@ -223,10 +223,46 @@ Doing this was hard for me in the beginning and confusing. There was a link to t
 
 
 
-
-## CircuitPython_LCD
+## Photointerrupters
 
 ### Description & Code 
+
+```python
+
+# Write your code here :-)
+from digitalio import DigitalInOut, Direction, Pull
+import time
+import board
+
+interrupter = DigitalInOut(board.D11)
+interrupter.direction = Direction.INPUT
+interrupter.pull = Pull.UP
+
+counter = 0
+
+photo = False
+state = False
+
+max = 4
+start = time.time()
+while True:
+
+    now = time.monotonic()
+
+    photo = interrupter.value
+    if photo and not state:
+            counter += 1
+    state = photo
+
+    remaining = max - time.time()
+
+    if remaining <= 0:
+        print("Interrupts:", str(counter))
+        max = time.time() + 4
+        counter = 0
+        
+  ```
+        
 
 ### Evidence
 
@@ -234,6 +270,60 @@ Doing this was hard for me in the beginning and confusing. There was a link to t
 
 ### Reflection
 
+
+
+## CircuitPython_LCD_Touch
+
+### Description & Code 
+
+```python
+import board
+import time
+from lcd.lcd import LCD
+from lcd.i2c_pcf8574_interface import I2CPCF8574Interface
+import touchio
+
+# get and i2c object
+i2c = board.I2C()
+# some LCDs are 0x3f... some are 0x27.
+lcd = LCD(I2CPCF8574Interface(i2c, 0x3f), num_rows=2, num_cols=16)
+
+touch_A0 = touchio.TouchIn(board.A0)
+touch_A5 = touchio.TouchIn(board.A5)
+
+counter = 0
+lcd.print("Hello, Engineer!")
+time.sleep(3)
+lcd.clear()
+
+while True:
+    if touch_A0.value:
+        counter += 1
+        lcd.set_cursor_pos(0, 0)
+        lcd.print(str(counter))
+        print(" Green wire touched ")
+
+    if touch_A5.value:
+        counter += 1
+        lcd.set_cursor_pos(1, 4)
+        lcd.print(str(counter))
+        print(" Yellow wire touched ")
+
+    else:
+        counter = counter
+        time.sleep(0.1)
+        
+   ```     
+
+### Evidence
+[This is Gventre code link that I used for LCD touch assignment](https://github.com/gventre04/CircuitPython/blob/master/lcd_button.py)
+
+[This is the link in Gventre github page that helped me understand the code better](https://learn.adafruit.com/sensor-plotting-with-mu-and-circuitpython/buttons-and-switch)
+
+
+### Images
+
+### Reflection
 
 
 

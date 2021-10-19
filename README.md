@@ -43,7 +43,7 @@ while True:
 
 
 ### Reflection
-Doing this was easy. The only promble was that I had the code written but when I was trying to uploaded it wasn't working like the light was changing, but one of my classmate help me out. The promble was that I had to uploade something in my folder first after doing that it worked. 
+Doing this was easy. The only problem was that I had the code written but when I was trying to uploaded it wasn't working like the light was changing, but one of my classmate help me out. The problem was that I had to uploade something in my folder first after doing that it worked. 
 
 
 
@@ -147,8 +147,8 @@ I used Mr. H code for this assignments.
 <img src="https://github.com/msadat50/CircuitPython/blob/main/Pictures/The%20touch%20servo%20wiring%20.png?raw=true" width="400">
 
 ### Reflection
-Doing this was good. I had some troubles getting the servo work. At the beginning the servo was working but than after a few minutes the servo wasn't working. I checked the wiring like 3 times to see if I had the wire in the wrong place, but the wiring seems good to me. After that I asked MR. H for help to see what could have gone wrong he checked the code everything looked good expect one part wasn't the same so we fix it. After that I uploded the code to see if the servo is working So I did but still the servo wasn't working. So the next day I checked the wiring again, the wiring was good I asked Mr. Dierolf for help. 
-He checked my code the code was good, than he checked the wiring at first when he see it the wiring was good, so we didn't know what I have done wrong. Than he said that I had one wiring putting in the wrong place, and I was using the wrong servo, so I changed the servo but than the servo worked. Thanks to Mr Dierolf he helped me fix it. 
+Doing this was good. I had some troubles getting the servo work. At the beginning the servo was working but than after a few minutes the servo wasn't working. I checked the wiring like 3 times to see if I had the wire in the wrong place, but the wiring seems good to me. After that I asked MR. H for help to see what could have gone wrong he checked the code everything looked good expect one part wasn't the same so we fix it. After that I uploded the code to see if the servo was working, but tha the servo wasn't working. So the next day I checked the wiring again, the wiring was good I asked Mr. Dierolf for help. 
+He checked my code the code was good, than he checked the wiring at first when he see it the wiring was good, so we didn't know what I have done wrong. Than he said that I was putting one wire in the wrong place, and I was using the wrong servo, so I changed the servo but than the servo worked. Thanks to Mr Dierolf he helped me fix it. 
 
 ## CircuitPython_Distance sensor
 
@@ -209,7 +209,7 @@ while True:
 
 
 ### Reflection
-Doing this was hard for me in the beginning and confusing. There was a link to the assignment that would take you to this very long confusing code when I saw that code I didn't know which part of the code we should copy, so I just copied the whole code and put it in Mu. After that I didn't even know what to do so I used the hint to help me when I clicked on it there was all variable iut made it even more confusing this time I asked Mr. H for help He helped me find the correct code and than explained it to me I understanded it better than it was easy and he did the first part of the code for me to understand it better. After that I knew what to do.
+Doing this was hard for me in the beginning and confusing. There was a link to the assignment that would take you to this very long confusing code when I saw that code I didn't know which part of the code we should copy, so I just copied the whole code and put it in Mu. After that I didn't even know what to do so I used the hint to help me when I clicked on it there was all variable iut made it even more confusing. This time I asked Mr. H for help He helped me find the correct code and than explained it to me I understanded it better than it was easy and he did the first part of the code for me to understand it better. After that I knew what to do.
 
 ### Evidence
 [This is Dylan Herrada code link that I used for Distance Sensor assignment](https://github.com/adafruit/Adafruit_CircuitPython_HCSR04/blob/main/examples/hcsr04_simpletest.py)
@@ -265,10 +265,17 @@ while True:
         
 
 ### Evidence
+[This is Gventre code link that I used for PhotoInterrupter assignment](https://github.com/gventre04/CircuitPython/blob/master/photointerrupter.py)
+
+[The picture credit goes to Gventre](https://github.com/gventre04/CircuitPython/raw/master/media/PhotoInterrupter.png)
+
 
 ### Images
 
+<img src="https://github.com/gventre04/CircuitPython/raw/master/media/PhotoInterrupter.png" width="400">
+
 ### Reflection
+Doing this assignment was easy I just had to copy the code, understand it, and know how to work it. It wasn't harder than the other assignments and it wasn't as confusing as the other assignments. 
 
 
 
@@ -318,13 +325,20 @@ while True:
 ### Evidence
 [This is Gventre code link that I used for LCD touch assignment](https://github.com/gventre04/CircuitPython/blob/master/lcd_button.py)
 
-[This is the link in Gventre github page that helped me understand the code better](https://learn.adafruit.com/sensor-plotting-with-mu-and-circuitpython/buttons-and-switch)
+[This is the link from Gventre github page that helped me understand the code better](https://learn.adafruit.com/sensor-plotting-with-mu-and-circuitpython/buttons-and-switch)
 
 
 ### Images
+The Touch LCD moved something like this. 
+
+<img src="https://assets.website-files.com/5beab1239ac8840644a660b4/5c2f6a0da059f38a075fe012_5c1ca503edf0cc792c36e658_counter-gif.gif" width="400">
+
+[Image credit goes to flowbase.co](https://www.flowbase.co/blog/guide-counter-interaction)
+
+
 
 ### Reflection
-
+Doing this assignment was pretty easy. I kind of hard trouble finding the code for this assignment I didn't know where to start or where to get the code from, so I went and did some reasearch to find the correct code for this but than I found one of Mr. H student from last year GirHub notebook. I went there and saw the code for this assignment his code was kind of different from mine but it helped me a lot and it helped me to understand the code better. So the full credit to Gventre. 
 
 
 

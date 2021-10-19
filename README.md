@@ -205,7 +205,9 @@ while True:
 ### Image/video
  The video credit goes to Quinn for helping me.
 
-<img src="the distance sensor.gif" width="400">
+<img src="the distance sensor.gif" width="300">
+
+<img src="https://github.com/msadat50/CircuitPython/blob/main/Pictures/Distance%20sensor%20picture.png?raw=true" width="400">
 
 
 ### Reflection
@@ -334,6 +336,11 @@ The Touch LCD moved something like this.
 <img src="https://assets.website-files.com/5beab1239ac8840644a660b4/5c2f6a0da059f38a075fe012_5c1ca503edf0cc792c36e658_counter-gif.gif" width="400">
 
 [Image credit goes to flowbase.co](https://www.flowbase.co/blog/guide-counter-interaction)
+
+<img src="https://github.com/msadat50/CircuitPython/blob/main/Pictures/lcd%201.jpg?raw=true" width= "300">
+<img src="https://github.com/msadat50/CircuitPython/blob/main/Pictures/lcd%202.jpg?raw=true" width= "300"> 
+
+The green and yellow color wire are the touch wires.
 
 
 

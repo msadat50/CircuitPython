@@ -4,7 +4,7 @@
 * [Table of Contents](#TableOfContents)
 * [Hello_CircuitPython](#Hello_CircuitPython)
 * [CircuitPython_Servo](#CircuitPython_Servo)
-* [CircuitPython Servo Touch](#CircuitPython_ServoTouch)
+* [Servo Touch CircuitPython](#ServoTouch_CircuitPython)
 * [CircuitPython Distance Sensor](#CircuitPython_DistanceSensor)
 * [CircuitPython Photointerrupters](#CircuitPython_Photointerrupter)
 * [CircuitPython_LCD](#CircuitPython_LCD)

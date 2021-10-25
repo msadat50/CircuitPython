@@ -4,10 +4,10 @@
 * [Table of Contents](#TableOfContents)
 * [Hello_CircuitPython](#Hello_CircuitPython)
 * [CircuitPython_Servo](#CircuitPython_Servo)
-* [Servo Touch CircuitPython](#CircuitPythoin_Servo_Touch)
+* [Servo Touch CircuitPython](#CircuitPython_Servo_Touch)
 * [CircuitPython Distance Sensor](#CircuitPython_Distance_Sensor)
 * [CircuitPython Photointerrupters](#CircuitPython_Photointerrupter)
-* [CircuitPython_LCD](#CircuitPython_LCD)
+* [CircuitPython_LCD Touch](#CircuitPython_LCD_Touch)
 * [NextAssignmentGoesHere](#NextAssignment)
 ---
 
@@ -89,7 +89,7 @@ The servo moved something like this:
 Doing this was easy. I had one wiring putting in the wrong place, which was the A1 Thanks to Mr. H he helped me correct it and he help me put the code into the in github. 
 
 
-## CircuitPythoin_Servo_Touch
+## CircuitPython_Servo_Touch
 
 ### Description & Code 
 This is the code for servo touch.
@@ -150,7 +150,7 @@ I used Mr. H code for this assignments.
 Doing this was good. I had some troubles getting the servo work. At the beginning the servo was working but than after a few minutes the servo wasn't working. I checked the wiring like 3 times to see if I had the wire in the wrong place, but the wiring seems good to me. After that I asked MR. H for help to see what could have gone wrong he checked the code everything looked good expect one part wasn't the same so we fix it. After that I uploded the code to see if the servo was working, but tha the servo wasn't working. So the next day I checked the wiring again, the wiring was good I asked Mr. Dierolf for help. 
 He checked my code the code was good, than he checked the wiring at first when he see it the wiring was good, so we didn't know what I have done wrong. Than he said that I was putting one wire in the wrong place, and I was using the wrong servo, so I changed the servo but than the servo worked. Thanks to Mr Dierolf he helped me fix it. 
 
-## CircuitPython_Distance sensor
+## CircuitPython_Distance_Sensor
 
 ### Description & Code 
 
@@ -225,7 +225,7 @@ Doing this was hard for me in the beginning and confusing. There was a link to t
 
 
 
-## Photointerrupters
+## CircuitPython_Photointerrupter
 
 ### Description & Code 
 

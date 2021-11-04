@@ -22,16 +22,16 @@ import neopixel
 import sleep
 
 dot = neopixel.NeoPixel(board.NEOPIXEL, 1)
-dot.brightness = 0.5 
+dot.brightness = 0.5     # the brightness
 
-print("Make it red!")
+print("Make it red!")        # printing red 
 
 while True:
-    dot.fill((0, 0, 255))
+    dot.fill((0, 0, 255))         # the red color value number 
     time.sleep
-    print("Make it yellow!")
-    dot.fill((51, 204, 51))
-    time.sleep
+    print("Make it yellow!")      # printing yellow 
+    dot.fill((51, 204, 51))       # the yellow color value number 
+    time.sleep                    # stop it
     
 
 ```
@@ -162,42 +162,43 @@ import neopixel
 import simpleio
 import adafruit_hcsr04
 
-sonar = adafruit_hcsr04.HCSR04(trigger_pin=board.D5, echo_pin=board.D6)
+sonar = adafruit_hcsr04.HCSR04(trigger_pin=board.D5, echo_pin=board.D6) 
 dot = neopixel.NeoPixel(board.NEOPIXEL, 1)
-r=0
-g=0
+
+r=0  
+g=0        # these are the values 
 b=0
 
 cm = 0
 while True:
     try:
         cm = sonar.distance
-        print((cm))
-        if cm < 5:
+        print((cm))    # printing numbers in cm
+        if cm < 5:     # if it's less then 5 
             r=255
-            g=0
+            g=0     # these are the values that they should be whe they're less then 5 
             b=0
-            print("red!")
-        elif cm < 20:
-            print("red or blue!")
-            r = simpleio.map_range(cm, 5, 20, 255, 0)
-            g = 0
-            b = simpleio.map_range(cm, 5, 20, 0, 255)
+            print("red!")     # printing red
+        elif cm < 20:         # if it's less then 20
+            print("red or blue!")  # print red or blue
+            r = simpleio.map_range(cm, 5, 20, 255, 0)  # red vaule 
+            g = 0        # green vaule 
+            b = simpleio.map_range(cm, 5, 20, 0, 255)  # blue value
 
 
-        elif cm < 35:
-            print("blue or green!")
+        elif cm < 35:   # if it's less then 35 
+            print("blue or green!")  # print blue or green
             r = 0
-            g = simpleio.map_range(cm, 20, 35, 0, 255)
-            b = simpleio.map_range(cm, 20, 35, 255, 0)
+            g = simpleio.map_range(cm, 20, 35, 0, 255)  # green value
+            b = simpleio.map_range(cm, 20, 35, 255, 0)  # blue value 
 
-        else:
-            print("green")
-        dot.fill((int(r), int(g), int(b)))
+        else:             # otherwise 
+            print("green") # print green
+        dot.fill((int(r), int(g), int(b))) # using the colors value 
 
-    except RuntimeError:
-        print("Retrying!")
-    time.sleep(0.1)
+    except RuntimeError: # the error command 
+        print("Retrying!") # if something goes wrong print retrying 
+    time.sleep(0.1)        # stop 
 
 
 ```
@@ -236,32 +237,32 @@ from digitalio import DigitalInOut, Direction, Pull
 import time
 import board
 
-interrupter = DigitalInOut(board.D11)
+interrupter = DigitalInOut(board.D11)  # Digital number in the board 
 interrupter.direction = Direction.INPUT
 interrupter.pull = Pull.UP
 
-counter = 0
+counter = 0   # counter statement
 
-photo = False
+photo = False  # true/false statement
 state = False
 
 max = 4
-start = time.time()
+start = time.time()  # time command 
 while True:
 
-    now = time.monotonic()
+    now = time.monotonic()   # starting time 
 
-    photo = interrupter.value
-    if photo and not state:
-            counter += 1
+    photo = interrupter.value  # the interrupter value 
+    if photo and not state:  # if statement/ telling it what to do 
+            counter += 1    # counter statement
     state = photo
 
     remaining = max - time.time()
 
-    if remaining <= 0:
-        print("Interrupts:", str(counter))
-        max = time.time() + 4
-        counter = 0
+    if remaining <= 0:    # if it's less then 0
+        print("Interrupts:", str(counter))    # print interupts 
+        max = time.time() + 4   # time 
+        counter = 0            # statement
         
   ```
         
@@ -297,30 +298,30 @@ i2c = board.I2C()
 # some LCDs are 0x3f... some are 0x27.
 lcd = LCD(I2CPCF8574Interface(i2c, 0x3f), num_rows=2, num_cols=16)
 
-touch_A0 = touchio.TouchIn(board.A0)
-touch_A5 = touchio.TouchIn(board.A5)
+touch_A0 = touchio.TouchIn(board.A0)   # the touch 1 wire pin in the board 
+touch_A5 = touchio.TouchIn(board.A5)   # the touch 2 wire pin in the board 
 
-counter = 0
-lcd.print("Hello, Engineer!")
-time.sleep(3)
-lcd.clear()
+counter = 0  # counter statement 
+lcd.print("Hello, Engineer!")   # print Hello Engineer! 
+time.sleep(3)   # Ending time 
+lcd.clear()     # clearing the lcd
 
 while True:
-    if touch_A0.value:
-        counter += 1
-        lcd.set_cursor_pos(0, 0)
-        lcd.print(str(counter))
-        print(" Green wire touched ")
+    if touch_A0.value:  # giving the statement a command 
+        counter += 1    # the counter statement
+        lcd.set_cursor_pos(0, 0)  # setting up the cursor pos value 
+        lcd.print(str(counter))  # print the counter statement
+        print(" Green wire touched ") # print green wire touch 
 
-    if touch_A5.value:
+    if touch_A5.value: # 2nd command 
         counter += 1
-        lcd.set_cursor_pos(1, 4)
-        lcd.print(str(counter))
-        print(" Yellow wire touched ")
+        lcd.set_cursor_pos(1, 4) # setting up the cursor pos value 
+        lcd.print(str(counter)) # printing the counter statement
+        print(" Yellow wire touched ") # print yellow wire touch 
 
     else:
-        counter = counter
-        time.sleep(0.1)
+        counter = counter 
+        time.sleep(0.1) # end
         
    ```     
 

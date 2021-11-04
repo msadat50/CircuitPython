@@ -203,7 +203,7 @@ while True:
 ```
 
 ### Image/video
- The video credit goes to Quinn for helping me.
+ The video credit goes to [Quinn](https://github.com/qragsda80/CircuitPython1) for helping me.
 
 <img src="the distance sensor.gif" width="300">
 

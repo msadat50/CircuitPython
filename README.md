@@ -14,7 +14,9 @@
 ## Hello_CircuitPython
 
 ### Description & Code
+The purpose of Hello CP was to make the onboard RGB LED change colours, which I achieved by using the neopixel library commands.
 This is the code for circuit python.
+
 
 ```python
 import board
@@ -24,12 +26,12 @@ import sleep
 dot = neopixel.NeoPixel(board.NEOPIXEL, 1)
 dot.brightness = 0.5     # the brightness
 
-print("Make it red!")        # printing red 
+print("Make it red!")       
 
 while True:
     dot.fill((0, 0, 255))         # the red color value number 
     time.sleep
-    print("Make it yellow!")      # printing yellow 
+    print("Make it yellow!")       
     dot.fill((51, 204, 51))       # the yellow color value number 
     time.sleep                    # stop it
     
@@ -51,7 +53,9 @@ Doing this was easy. The only problem was that I had the code written but when I
 ## CircuitPython_Servo
 
 ### Description & Code
+The purpose of this assignment was to turn an 90 degree servo, I achived my goal by using the PWMOut library commands. 
 This is the code for making a servo trun. 
+
 ```python
 # Write your code here :-)
 import board
@@ -73,7 +77,6 @@ while True:
         time.sleep(0.05)
 ```
 
-### Evidence
 The servo moved something like this:
 
 <img src="https://media.giphy.com/media/4EFCiAOcusZ2OOTi3X/giphy.gif" width="400">
@@ -81,6 +84,7 @@ The servo moved something like this:
 [Image credit goes to electronics-lab.com](https://www.electronics-lab.com/project/using-sg90-servo-motor-arduino/)
 
 [This is the websites that I used to get the code for my servo.](https://www.makerguides.com/servo-arduino-tutorial/)
+
 
 ### Images
 <img src="https://github.com/msadat50/CircuitPython/blob/main/Pictures/Screenshot%202021-09-13%203.05.01%20PM.png?raw=true" width="400">
@@ -92,6 +96,7 @@ Doing this was easy. I had one wiring putting in the wrong place, which was the 
 ## CircuitPython_Servo_Touch
 
 ### Description & Code 
+The purpose of CircuitPython servo Touch was to make a servo turn by touching the wires, which I achive by using the PWMOut library.  
 This is the code for servo touch.
 
 
@@ -130,7 +135,7 @@ while True:
     print("end of loop!")
     
 ```
-## Evidence
+
 The touch servo moved something like this:
 
 <img src="https://projects-static.raspberrypi.org/projects/getting-started-crumble/0df4d240330dcb842375927e100ab166c46a5cb8/en/images/servo_movement_0.gif" width="400">
@@ -138,10 +143,10 @@ The touch servo moved something like this:
 [Image credit goes to projects.raspberrypi.org](https://projects.raspberrypi.org/en/projects/getting-started-crumble/6)
 
 
-
 I used Mr. H code for this assignments. 
 
 [This is Mr. H code link that I used for servo Touch assignment](https://github.com/Helmstk1/CircuitPython/blob/master/files/touchTheWireServo.py)
+
 
 ### Images
 <img src="https://github.com/msadat50/CircuitPython/blob/main/Pictures/The%20touch%20servo%20wiring%20.png?raw=true" width="400">
@@ -150,10 +155,12 @@ I used Mr. H code for this assignments.
 Doing this was good. I had some troubles getting the servo work. At the beginning the servo was working but than after a few minutes the servo wasn't working. I checked the wiring like 3 times to see if I had the wire in the wrong place, but the wiring seems good to me. After that I asked MR. H for help to see what could have gone wrong he checked the code everything looked good expect one part wasn't the same so we fix it. After that I uploded the code to see if the servo was working, but tha the servo wasn't working. So the next day I checked the wiring again, the wiring was good I asked Mr. Dierolf for help. 
 He checked my code the code was good, than he checked the wiring at first when he see it the wiring was good, so we didn't know what I have done wrong. Than he said that I was putting one wire in the wrong place, and I was using the wrong servo, so I changed the servo but than the servo worked. Thanks to Mr Dierolf he helped me fix it. 
 
+
 ## CircuitPython_Distance_Sensor
 
 ### Description & Code 
-
+The purpose of this assingment was to measure the distance by using sensors. I achive my goal by using neopixel library and using an HCSR04 sensor. 
+This is the code for the distance sensor.
 ```python
 
 import time
@@ -166,7 +173,7 @@ sonar = adafruit_hcsr04.HCSR04(trigger_pin=board.D5, echo_pin=board.D6)
 dot = neopixel.NeoPixel(board.NEOPIXEL, 1)
 
 r=0  
-g=0        # these are the values 
+g=0        # these are the start values of each color 
 b=0
 
 cm = 0
@@ -174,13 +181,13 @@ while True:
     try:
         cm = sonar.distance
         print((cm))    # printing numbers in cm
-        if cm < 5:     # if it's less then 5 
+        if cm < 5:    
             r=255
-            g=0     # these are the values that they should be whe they're less then 5 
+            g=0     # these are the values where one value start high while other ones are off
             b=0
-            print("red!")     # printing red
+            print("red!")    
         elif cm < 20:         # if it's less then 20
-            print("red or blue!")  # print red or blue
+            print("red or blue!") 
             r = simpleio.map_range(cm, 5, 20, 255, 0)  # red vaule 
             g = 0        # green vaule 
             b = simpleio.map_range(cm, 5, 20, 0, 255)  # blue value
@@ -194,14 +201,23 @@ while True:
 
         else:             # otherwise 
             print("green") # print green
-        dot.fill((int(r), int(g), int(b))) # using the colors value 
+        dot.fill((int(r), int(g), int(b))) # the color intergers 
 
     except RuntimeError: # the error command 
         print("Retrying!") # if something goes wrong print retrying 
-    time.sleep(0.1)        # stop 
+    time.sleep(0.1)       
 
 
 ```
+
+[This is Dylan Herrada code link that I used for Distance Sensor assignment](https://github.com/adafruit/Adafruit_CircuitPython_HCSR04/blob/main/examples/hcsr04_simpletest.py)
+
+[This was the Dylan Herrada long confusing code for distance sensor assignment](https://github.com/adafruit/Adafruit_CircuitPython_HCSR04/blob/main/adafruit_hcsr04.py)
+
+[This is the hint link for distance sensor assignment thjat I used](https://docs.google.com/spreadsheets/d/e/2PACX-1vRzoIejkQqugrDoWHBw14qTI0HifXba92WiyQ24whEnzWcCUaCDYu6ifMQKK5O5Ilkxrd7UKIxPLBCW/pubhtml)
+
+[This is the link for how to use simpleip for distance sensor assignment](https://circuitpython.readthedocs.io/projects/simpleio/en/latest/api.html#simpleio.map_range)
+
 
 ### Image/video
  The video credit goes to [Quinn](https://github.com/qragsda80/CircuitPython1) for helping me.
@@ -214,21 +230,12 @@ while True:
 ### Reflection
 Doing this was hard for me in the beginning and confusing. There was a link to the assignment that would take you to this very long confusing code when I saw that code I didn't know which part of the code we should copy, so I just copied the whole code and put it in Mu. After that I didn't even know what to do so I used the hint to help me when I clicked on it there was all variable iut made it even more confusing. This time I asked Mr. H for help He helped me find the correct code and than explained it to me I understanded it better than it was easy and he did the first part of the code for me to understand it better. After that I knew what to do.
 
-### Evidence
-[This is Dylan Herrada code link that I used for Distance Sensor assignment](https://github.com/adafruit/Adafruit_CircuitPython_HCSR04/blob/main/examples/hcsr04_simpletest.py)
-
-[This was the Dylan Herrada long confusing code for distance sensor assignment](https://github.com/adafruit/Adafruit_CircuitPython_HCSR04/blob/main/adafruit_hcsr04.py)
-
-[This is the hint link for distance sensor assignment thjat I used](https://docs.google.com/spreadsheets/d/e/2PACX-1vRzoIejkQqugrDoWHBw14qTI0HifXba92WiyQ24whEnzWcCUaCDYu6ifMQKK5O5Ilkxrd7UKIxPLBCW/pubhtml)
-
-[This is the link for how to use simpleip for distance sensor assignment](https://circuitpython.readthedocs.io/projects/simpleio/en/latest/api.html#simpleio.map_range)
-
-
-
 
 ## CircuitPython_Photointerrupter
 
 ### Description & Code 
+The purpose of this assignment was to get an photointerruper work that counts, which I achieved by using DigitalInOut library command. 
+This is the code for the photointerrupter
 
 ```python
 
@@ -241,28 +248,28 @@ interrupter = DigitalInOut(board.D11)  # Digital number in the board
 interrupter.direction = Direction.INPUT
 interrupter.pull = Pull.UP
 
-counter = 0   # counter statement
+counter = 0   
 
-photo = False  # true/false statement
+photo = False  
 state = False
 
-max = 4
-start = time.time()  # time command 
+max = 4  # the max time is 4
+start = time.time() 
 while True:
 
-    now = time.monotonic()   # starting time 
+    now = time.monotonic()  
 
-    photo = interrupter.value  # the interrupter value 
-    if photo and not state:  # if statement/ telling it what to do 
-            counter += 1    # counter statement
+    photo = interrupter.value 
+    if photo and not state:  
+            counter += 1  
     state = photo
 
     remaining = max - time.time()
 
-    if remaining <= 0:    # if it's less then 0
-        print("Interrupts:", str(counter))    # print interupts 
-        max = time.time() + 4   # time 
-        counter = 0            # statement
+    if remaining <= 0:    
+        print("Interrupts:", str(counter))    
+        max = time.time() + 4    
+        counter = 0            
         
   ```
         
@@ -285,6 +292,8 @@ Doing this assignment was easy I just had to copy the code, understand it, and k
 ## CircuitPython_LCD_Touch
 
 ### Description & Code 
+The purpose of this assignment was to print numbers using an LCD and 2 wires, which I achieved by using an LCD.  
+This is the code for the LCD touch 
 
 ```python
 import board
@@ -302,30 +311,29 @@ touch_A0 = touchio.TouchIn(board.A0)   # the touch 1 wire pin in the board
 touch_A5 = touchio.TouchIn(board.A5)   # the touch 2 wire pin in the board 
 
 counter = 0  # counter statement 
-lcd.print("Hello, Engineer!")   # print Hello Engineer! 
-time.sleep(3)   # Ending time 
-lcd.clear()     # clearing the lcd
+lcd.print("Hello, Engineer!")   
+time.sleep(3)   
+lcd.clear()    
 
 while True:
     if touch_A0.value:  # giving the statement a command 
         counter += 1    # the counter statement
         lcd.set_cursor_pos(0, 0)  # setting up the cursor pos value 
-        lcd.print(str(counter))  # print the counter statement
-        print(" Green wire touched ") # print green wire touch 
+        lcd.print(str(counter)) 
+        print(" Green wire touched ") 
 
-    if touch_A5.value: # 2nd command 
+    if touch_A5.value: 
         counter += 1
-        lcd.set_cursor_pos(1, 4) # setting up the cursor pos value 
+        lcd.set_cursor_pos(1, 4) 
         lcd.print(str(counter)) # printing the counter statement
-        print(" Yellow wire touched ") # print yellow wire touch 
-
+        print(" Yellow wire touched ") 
+        
     else:
         counter = counter 
-        time.sleep(0.1) # end
+        time.sleep(0.1) 
         
    ```     
 
-### Evidence
 [This is Gventre code link that I used for LCD touch assignment](https://github.com/gventre04/CircuitPython/blob/master/lcd_button.py)
 
 [This is the link from Gventre github page that helped me understand the code better](https://learn.adafruit.com/sensor-plotting-with-mu-and-circuitpython/buttons-and-switch)

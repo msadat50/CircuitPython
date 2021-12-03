@@ -29,10 +29,10 @@ dot.brightness = 0.5     # the brightness
 print("Make it red!")       
 
 while True:
-    dot.fill((0, 0, 255))         # the red color value number 
+    dot.fill((0, 0, 255))         # the red color value that starts from zero than it goes higher  
     time.sleep
     print("Make it yellow!")       
-    dot.fill((51, 204, 51))       # the yellow color value number 
+    dot.fill((51, 204, 51))       # the yellow color value number that starts from an avarge number then it goes to a higher number
     time.sleep                    # stop it
     
 
@@ -62,19 +62,19 @@ import board
 import pwmio
 import servo
 
-# create a PWMOut object on Pin A2.
-pwm = pwmio.PWMOut(board.A2, duty_cycle=2 ** 15, frequency=50)
+# create a PWMOut object on Pin A2. 
+pwm = pwmio.PWMOut(board.A2, duty_cycle=2 ** 15, frequency=50) # setting up the servo rotation 
 
 # Create a servo object, my_servo.
 my_servo = servo.Servo(pwm)
 
 while True:
-    for angle in range(0, 180, 5):  # 0 - 180 degrees, 5 degrees at a time.
+    for angle in range(0, 180, 5):  # 0 - 180 degrees, 5 degrees at a time
         my_servo.angle = angle
         time.sleep(0.05)
-    for angle in range(180, 0, -5): # 180 - 0 degrees, 5 degrees at a time.
+    for angle in range(180, 0, -5): # 180 - 0 degrees, 5 degrees at a time
         my_servo.angle = angle
-        time.sleep(0.05)
+        time.sleep(0.05)     #setting up a reset before it repeats the loop 
 ```
 
 The servo moved something like this:
@@ -108,31 +108,31 @@ import touchio
 import servo
 
 # create a PWMOut object on Pin A2.
-pwm = pwmio.PWMOut(board.A2, duty_cycle=2 ** 15, frequency=50)
+pwm = pwmio.PWMOut(board.A2, duty_cycle=2 ** 15, frequency=50)   # setting up the servo rotation 
 
 # Create a servo object, my_servo.
-my_servo = servo.Servo(pwm)
+my_servo = servo.Servo(pwm) 
 
-touch_pad1 = board.A0  # Will not work for Circuit Playground Express!
-touch1 = touchio.TouchIn(touch_pad1)
-touch_pad2 = board.A5  # Will not work for Circuit Playground Express!
-touch2 = touchio.TouchIn(touch_pad2)
+touch_pad1 = board.A0   # the first touch wire vaule in the board 
+touch1 = touchio.TouchIn(touch_pad1)   # the touch command in order to make the servo touch work 
+touch_pad2 = board.A5    # the 2nd wire touch vaule in the board that shows where the 2nd wire suppose to be in the board 
+touch2 = touchio.TouchIn(touch_pad2) # the basic command for servo touch 
 
-while True:
+while True:  # helps run this loop forever
 
-    if touch1.value:
+    if touch1.value:  # the funcation touch value command that helps the servo turn left 
         print("Touched the White Wire!")
         for angle in range(0, 180, 5):  # 0 - 180 degrees, 5 degrees at a time.
-            my_servo.angle = angle
-            print(angle)
-            time.sleep(0.05)
-    if touch2.value:
+            my_servo.angle = angle # setting up the angle of the servo 
+            print(angle)  # telling the angle vaule in serial monitor
+            time.sleep(0.05) # a reset before it repeats the loop 
+    if touch2.value:   #the 2nd wire touch that helps turn right 
         print("Touched the Green Wire!")
         for angle in range(180, 0, -5):  # 180 - 0 degrees, 5 degrees at a time
-            my_servo.angle = angle
-            time.sleep(0.05)
-    time.sleep(0.05)
-    print("end of loop!")
+            my_servo.angle = angle  # setting up the angle of the servo 
+            time.sleep(0.05)    # a reset before it repeats the loop 
+    time.sleep(0.05)   # a reset before it repeats the loop 
+    print("end of loop!") # when no one touchs the wires it's printing the end of the loop
     
 ```
 
@@ -169,7 +169,7 @@ import neopixel
 import simpleio
 import adafruit_hcsr04
 
-sonar = adafruit_hcsr04.HCSR04(trigger_pin=board.D5, echo_pin=board.D6) 
+sonar = adafruit_hcsr04.HCSR04(trigger_pin=board.D5, echo_pin=board.D6)  # setting up the sensor pins 
 dot = neopixel.NeoPixel(board.NEOPIXEL, 1)
 
 r=0  
@@ -177,35 +177,35 @@ g=0        # these are the start values of each color
 b=0
 
 cm = 0
-while True:
+while True:    # helps run this loop forever
     try:
-        cm = sonar.distance
+        cm = sonar.distance  # the distance number that sends back to the sensor in cm 
         print((cm))    # printing numbers in cm
-        if cm < 5:    
-            r=255
-            g=0     # these are the values where one value start high while other ones are off
+        if cm < 5:    # the command funcation that if the distance vaule is less than 5cm it should be red
+            r=255   # the vaules that we are staring with is red 
+            g=0     # these are the values where one value start first while other ones are off
             b=0
-            print("red!")    
-        elif cm < 20:         # if it's less then 20
-            print("red or blue!") 
-            r = simpleio.map_range(cm, 5, 20, 255, 0)  # red vaule 
-            g = 0        # green vaule 
-            b = simpleio.map_range(cm, 5, 20, 0, 255)  # blue value
+            print("red!")   # it's gonna print red in serial monitor  
+        elif cm < 20:         # if the distance is less then 20cm it should be 2 colors 
+            print("red or blue!")  # the serial monitor that prints red or blue so we could see that it's less than 20cm
+            r = simpleio.map_range(cm, 5, 20, 255, 0)  #Maps out the values of red that the led moves between
+            g = 0        # green vaule is off because it's less than 20cm
+            b = simpleio.map_range(cm, 5, 20, 0, 255)  #Maps out the values of blue that the led moves between
 
 
         elif cm < 35:   # if it's less then 35 
-            print("blue or green!")  # print blue or green
-            r = 0
-            g = simpleio.map_range(cm, 20, 35, 0, 255)  # green value
-            b = simpleio.map_range(cm, 20, 35, 255, 0)  # blue value 
+            print("blue or green!")  # the serial monitor should print blue or green so we know it's less than 35cm
+            r = 0    # the red value is off because it's less than 35cm
+            g = simpleio.map_range(cm, 20, 35, 0, 255)  #Maps out the values of green that the led moves between
+            b = simpleio.map_range(cm, 20, 35, 255, 0)  #Maps out the values of blue that the led moves between
 
         else:             # otherwise 
-            print("green") # print green
-        dot.fill((int(r), int(g), int(b))) # the color intergers 
+            print("green") # it should be printing green
+        dot.fill((int(r), int(g), int(b)))  # the color values integer that the led moves should be moving equaly
 
-    except RuntimeError: # the error command 
+    except RuntimeError: # the error command that when something went wrong 
         print("Retrying!") # if something goes wrong print retrying 
-    time.sleep(0.1)       
+    time.sleep(0.1)       # a reset before it repeats the loop 
 
 
 ```
@@ -244,9 +244,9 @@ from digitalio import DigitalInOut, Direction, Pull
 import time
 import board
 
-interrupter = DigitalInOut(board.D11)  # Digital number in the board 
-interrupter.direction = Direction.INPUT
-interrupter.pull = Pull.UP
+interrupter = DigitalInOut(board.D11)  # sets the digital number in the board 
+interrupter.direction = Direction.INPUT  # sets up the input of the board 
+interrupter.pull = Pull.UP  
 
 counter = 0   
 
@@ -305,32 +305,32 @@ import touchio
 # get and i2c object
 i2c = board.I2C()
 # some LCDs are 0x3f... some are 0x27.
-lcd = LCD(I2CPCF8574Interface(i2c, 0x3f), num_rows=2, num_cols=16)
+lcd = LCD(I2CPCF8574Interface(i2c, 0x3f), num_rows=2, num_cols=16)  # sets the board pins
 
 touch_A0 = touchio.TouchIn(board.A0)   # the touch 1 wire pin in the board 
 touch_A5 = touchio.TouchIn(board.A5)   # the touch 2 wire pin in the board 
 
-counter = 0  # counter statement 
-lcd.print("Hello, Engineer!")   
-time.sleep(3)   
-lcd.clear()    
+counter = 0  # the counter statement 
+lcd.print("Hello, Engineer!")   # when the wires are touched the serial monitor should print Hello Engineer
+time.sleep(3)    # a reset before it repeats the loop 
+lcd.clear()    # afte the reset the LCD is clear 
 
-while True:
+while True:   # helps run the loop forever  
     if touch_A0.value:  # giving the statement a command 
-        counter += 1    # the counter statement
+        counter += 1    # when touching the object the counter statement adds to the value
         lcd.set_cursor_pos(0, 0)  # setting up the cursor pos value 
-        lcd.print(str(counter)) 
-        print(" Green wire touched ") 
+        lcd.print(str(counter))  # printing the counter statement
+        print(" Green wire touched ")  # the serial monitor will print Green wire touched 
 
     if touch_A5.value: 
-        counter += 1
-        lcd.set_cursor_pos(1, 4) 
+        counter += 1   # when touching the object the counter statement adds to the value
+        lcd.set_cursor_pos(1, 4) # setting up the cursor pos value 
         lcd.print(str(counter)) # printing the counter statement
-        print(" Yellow wire touched ") 
+        print(" Yellow wire touched ") # the serial monitor will print Yellow wire touched 
         
     else:
-        counter = counter 
-        time.sleep(0.1) 
+        counter = counter # counting the object vaule 
+        time.sleep(0.1)  # a reset before it repeats the loop 
         
    ```     
 

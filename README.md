@@ -28,9 +28,9 @@ dot.brightness = 0.5     # the brightness
 
 print("Make it red!")       
 
-while True:
+while True:  # helps the loop runs forever 
     dot.fill((0, 0, 255))         # the red color value that starts from zero than it goes higher  
-    time.sleep
+    time.sleep        #setting up a reset before it repeats the loop 
     print("Make it yellow!")       
     dot.fill((51, 204, 51))       # the yellow color value number that starts from an avarge number then it goes to a higher number
     time.sleep                    # stop it
@@ -70,10 +70,10 @@ my_servo = servo.Servo(pwm)
 
 while True:
     for angle in range(0, 180, 5):  # 0 - 180 degrees, 5 degrees at a time
-        my_servo.angle = angle
-        time.sleep(0.05)
+        my_servo.angle = angle  # the servo angle command 
+        time.sleep(0.05) #setting up a reset before it repeats the loop 
     for angle in range(180, 0, -5): # 180 - 0 degrees, 5 degrees at a time
-        my_servo.angle = angle
+        my_servo.angle = angle  # the servo angle command 
         time.sleep(0.05)     #setting up a reset before it repeats the loop 
 ```
 
@@ -245,31 +245,31 @@ import time
 import board
 
 interrupter = DigitalInOut(board.D11)  # sets the digital number in the board 
-interrupter.direction = Direction.INPUT  # sets up the input of the board 
+interrupter.direction = Direction.INPUT  # sets up the input direction of the board 
 interrupter.pull = Pull.UP  
 
 counter = 0   
 
-photo = False  
+photo = False  # the false statement
 state = False
 
 max = 4  # the max time is 4
-start = time.time() 
-while True:
+start = time.time()  # starting the time 
+while True: # helps run this loop forever 
 
-    now = time.monotonic()  
+    now = time.monotonic()  # starts timing the monotonic
 
-    photo = interrupter.value 
-    if photo and not state:  
-            counter += 1  
+    photo = interrupter.value  # the photo interrupter value 
+    if photo and not state:  # the photo interrupter if statement
+            counter += 1  # add 1 to the counter statement vaule 
     state = photo
 
-    remaining = max - time.time()
+    remaining = max - time.time() # the remaining max time 
 
-    if remaining <= 0:    
-        print("Interrupts:", str(counter))    
-        max = time.time() + 4    
-        counter = 0            
+    if remaining <= 0:    #if the remaining is less than 0
+        print("Interrupts:", str(counter))    # the serial monitor should print interrupts 
+        max = time.time() + 4    # add 4 to the max time 
+        counter = 0            # the counter statement drops down to zero
         
   ```
         

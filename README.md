@@ -361,14 +361,72 @@ Doing this assignment was pretty easy. I kind of hard trouble finding the code f
 ## NextAssignment
 
 ### Description & Code
+The class code
 
 ```python
-Code goes here
+
+# These are the libraries needed to fade an LED, even if you imported elsewhere
+import time
+import pwmio
+
+class RGB(object):
+
+    full = 65535
+
+class LED:
+        # It's propper coding to always write a line explaining a class
+        # with a "docstring."   Like this:
+    '''LED is a class designed for a single color LED to fade in and out'''
+
+    def __init__(self, ledpin):
+
+        self.led = pwmio.PWMOut(ledpin, frequency=5000, duty_cycle=0)
+
+        # init is like void Setup() from arduino.  Initialize your pins here
+        # start each object with "self.object"
+
+    def fade(self):
+        for i in range(100):
+            # PWM LED up and down
+            if i < 50:
+                self.led.duty_cycle = int(i * 2 * 65535 / 100)  # Up
+            else:
+                self.led.duty_cycle = 65535 - int((i - 50) * 2 * 65535 / 100)   # Down
+            print(self.led.duty_cycle)
+            time.sleep(0.03)
 
 ```
+
+The main code
+
+```python
+''' This file is the class-based version of making a single LED fade'''
+import time
+import board
+from rgb import LED   # import the LED class from the rgb module
+
+blueLEDPin = board.D9
+greenLEDPin = board.D8
+redLEDPin = board.D10
+
+myBlueLED = LED(blueLEDPin)
+myGreenLED = LED(greenLEDPin)
+myRedLED = LED(redLEDPin)
+
+while True:
+    myBlueLED.fade()
+    time.sleep(1)
+    myGreenLED.fade()
+    time.sleep(1)
+    myRedLED.fade()
+    time.sleep(1)
+    
+```
+
 
 ### Evidence
 
 ### Images
+<imag src="![RGB LED wiring](https://user-images.githubusercontent.com/71345399/157266888-ebdef9a3-3b08-41ae-a776-35457f1dee77.PNG)>"
 
 ### Reflection

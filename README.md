@@ -8,7 +8,7 @@
 * [CircuitPython Distance Sensor](#CircuitPython_Distance_Sensor)
 * [CircuitPython Photointerrupters](#CircuitPython_Photointerrupter)
 * [CircuitPython_LCD Touch](#CircuitPython_LCD_Touch)
-* [NextAssignmentGoesHere](#NextAssignment)
+* [RGB](#RGB)
 ---
 
 ## Hello_CircuitPython
@@ -367,66 +367,191 @@ The class code
 
 # These are the libraries needed to fade an LED, even if you imported elsewhere
 import time
+import board
 import pwmio
+import digitalio
 
-class RGB(object):
+lightBulb = digitalio.DigitalInOut(board.D13)       # I moved my RGBLED power wire from 5v
+lightBulb.direction = digitalio.Direction.OUTPUT    # and plugged it into D13.  I'll explain later.
 
-    full = 65535
-
-class LED:
-        # It's propper coding to always write a line explaining a class
-        # with a "docstring."   Like this:
+class LED:      # It's propper coding to always write a line explaining a class
+                # with a "docstring."   Like this:
     '''LED is a class designed for a single color LED to fade in and out'''
 
-    def __init__(self, ledpin):
-
-        self.led = pwmio.PWMOut(ledpin, frequency=5000, duty_cycle=0)
-
+    def __init__(self, ledpin, name):
         # init is like void Setup() from arduino.  Initialize your pins here
-        # start each object with "self.object"
+        self.led = pwmio.PWMOut(ledpin, frequency=5000, duty_cycle=0)
+        self.name = name
 
-    def fade(self):
-        for i in range(100):
-            # PWM LED up and down
-            if i < 50:
-                self.led.duty_cycle = int(i * 2 * 65535 / 100)  # Up
-            else:
-                self.led.duty_cycle = 65535 - int((i - 50) * 2 * 65535 / 100)   # Down
-            print(self.led.duty_cycle)
-            time.sleep(0.03)
+    def fadedown(self): # Fades LED from bright to dim
+        for i in range(255):
+            if i < (255/2):
+                self.led.duty_cycle = int(i * 65535 / (255/2))
+            print(self.led,",",self.led.duty_cycle)
+            time.sleep(0.01)
+
+    def fadeup(self):  # Fades LED from dim to bright
+        for i in range(255):
+            if i > (255/2):
+                self.led.duty_cycle = 65535 - int((i - (255/2)) * 65535 / (255/2))
+            print(self.name, ", ", self.led.duty_cycle)
+            time.sleep(0.01)
+
+    def on(self, brightness=65535):  # Remember "on" means duty cycles < 65535
+        self.led.duty_cycle = 65535 - brightness
+        lightBulb.value = 65535
+
+
+    def off(self): # "off" means duty cycle should be full.
+        self.led.duty_cycle = 65535
+
+
+
+class RGB:
+    '''this class should impliment all 3 pins together to control an RGB LED'''
+    from rgb import LED
+        # Let's take a second to appreciate that we're using a class to call a class!
+        # Let LED do all the nitty gritty work, this RGB class will be the "manager"
+
+
+    def __init__(self, redPin, greenPin, bluePin):
+        # To initialize an RGB LED, we need to initialize 3 LED pins.
+        self.myRedLED = LED(redPin, "red")
+        self.myBlueLED = LED(bluePin, "blue")
+        self.myGreenLED = LED(greenPin, "green")
+
+    def blue(self, brightness=65535):
+        # Notice the brightness=65535?  Thats an OPTIONAL parameter!  So in main.py,
+        # you can call "RGBLED1.blue() for full brightness, or "RGBLED1.blue(half) to
+        # make it dimmer!
+        self.myBlueLED.on(brightness)
+        self.myGreenLED.off()
+        self.myRedLED.off()
+
+
+    def red(self, brightness=65535):
+        # Notice the brightness=65535?  Thats an OPTIONAL parameter!  So in main.py,
+        # you can call "RGBLED1.blue() for full brightness, or "RGBLED1.blue(half) to
+        # make it dimmer!
+        self.myBlueLED.off()
+        self.myGreenLED.off()
+        self.myRedLED.on(brightness)
+
+    def green(self, brightness=65535):
+        # Notice the brightness=65535?  Thats an OPTIONAL parameter!  So in main.py,
+        # you can call "RGBLED1.blue() for full brightness, or "RGBLED1.blue(half) to
+        # make it dimmer!
+        self.myBlueLED.off()
+        self.myGreenLED.on(brightness)
+        self.myRedLED.off()
+
+    def yellow(self, brightness=65535):
+        # Notice the brightness=65535?  Thats an OPTIONAL parameter!  So in main.py,
+        # you can call "RGBLED1.blue() for full brightness, or "RGBLED1.blue(half) to
+        # make it dimmer!
+        self.myBlueLED.off()
+        self.myGreenLED.on(brightness)
+        self.myRedLED.on(brightness)
+
+    def cyan(self, brightness=65535):
+        # Notice the brightness=65535?  Thats an OPTIONAL parameter!  So in main.py,
+        # you can call "RGBLED1.blue() for full brightness, or "RGBLED1.blue(half) to
+        # make it dimmer!
+        self.myBlueLED.on(brightness)
+        self.myGreenLED.on(brightness)
+        self.myRedLED.off()
+
+    def magenta(self, brightness=65535):
+        # Notice the brightness=65535?  Thats an OPTIONAL parameter!  So in main.py,
+        # you can call "RGBLED1.blue() for full brightness, or "RGBLED1.blue(half) to
+        # make it dimmer!
+        self.myBlueLED.on(brightness)
+        self.myGreenLED.off()
+        self.myRedLED.on(brightness)
+
+    def white(self, brightness=65535):
+        # Notice the brightness=65535?  Thats an OPTIONAL parameter!  So in main.py,
+        # you can call "RGBLED1.blue() for full brightness, or "RGBLED1.blue(half) to
+        # make it dimmer!
+        self.myBlueLED.on(brightness)
+        self.myGreenLED.on(brightness)
+        self.myRedLED.on(brightness)
+       
+    def Blinky(self, brightness = 65535):
+        # Blinky = blink faster
+        self.white()
+        time.sleep(1)  
+        self.off()
+        time.sleep(1)
+       
+
+    def off(self):
+        # This turns off all 3 LEDs, but my LEDs were still glowing a tiny bit.
+        # To fix this, i took the RGB power wire out of 5V , and plugged it into D13.
+        # Now when I want the LED to be off, it's truly off!
+        self.myBlueLED.off()
+        self.myGreenLED.off()
+        self.myRedLED.off()
+        lightBulb.value = 0
 
 ```
 
 The main code
 
 ```python
-''' This file is the class-based version of making a single LED fade'''
+''' This file is the class-based version of making a single LED fade '''
 import time
 import board
-from rgb import LED   # import the LED class from the rgb module
+from rgb import RGB
 
-blueLEDPin = board.D9
-greenLEDPin = board.D8
-redLEDPin = board.D10
+r1 = board.D8
+b1 = board.D9
+g1 = board.D10
+r2 = board.D4
+b2 = board.D5
+g2 = board.D7 # D6 uses the same timer as D8,9,10.  Avoid!
 
-myBlueLED = LED(blueLEDPin)
-myGreenLED = LED(greenLEDPin)
-myRedLED = LED(redLEDPin)
+full = 65535                # Max Brightness
+half = int(65535/2)         # Half Brightness
+
+myRGBled1 = RGB(r1, g1, b1) # create a new RGB object, using pins 8, 9, & 10
+myRGBled2 = RGB(r2, g2, b2) # create a new RGB object, using pins 4, 5, & 7
+
 
 while True:
-    myBlueLED.fade()
+    '''Shines two RGB LEDs in opposing colours, then rainbows!'''
+    myRGBled1.blue(half)
+    myRGBled2.yellow(half)
     time.sleep(1)
-    myGreenLED.fade()
+    myRGBled1.off()
+    myRGBled2.off()
+    time.sleep(2)
+
+    myRGBled1.red()
+    myRGBled2.cyan()
     time.sleep(1)
-    myRedLED.fade()
+    myRGBled1.off()
+    myRGBled2.off()
+    time.sleep(2)
+
+    myRGBled1.green()
+    myRGBled2.magenta()
     time.sleep(1)
-    
+    myRGBled1.off()
+    myRGBled2.off()
+    time.sleep(2)
+
+    myRGBled1.Blinky(rate1) # Obviously you should replace "rate1" with a real number...
+    myRGBled2.Blinky(rate2) # Sames
+    time.sleep(3)
 ```
 
 
 ### Evidence
+[The picture credit goes to create.arduino.cc](https://create.arduino.cc/projecthub/Shahirnasar/simple-rgb-led-light-with-fade-635bc2)
 
 ### Images
 <imag src="![RGB LED wiring](https://user-images.githubusercontent.com/71345399/157266888-ebdef9a3-3b08-41ae-a776-35457f1dee77.PNG)>"
 
 ### Reflection
+In this assignment I learned how Classes, Objects, and Modules works. It was really fun playing with them. This assignment was really confusing but I got it done by the help of MR. H. at first my code wasn't working but then I realized that it was my wiring so Mr. H helped me fix that Thanks to him. 

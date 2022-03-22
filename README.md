@@ -358,7 +358,7 @@ Doing this assignment was pretty easy. I kind of hard trouble finding the code f
 
 
 
-## NextAssignment
+## RGB
 
 ### Description & Code
 The class code
